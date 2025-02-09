@@ -1,0 +1,101 @@
+[gd_scene load_steps=19 format=3 uid="uid://dp443o7bre56r"]
+
+[ext_resource type="Script" path="res://Models/character.gd" id="1_40kn6"]
+[ext_resource type="PackedScene" uid="uid://c4mc4ou4oug0j" path="res://Models/3DGodotRobot.glb" id="1_adrgb"]
+[ext_resource type="Script" path="res://Models/animation_tree.gd" id="3_xhw34"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hv5dr"]
+animation = &"Attack1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xxsiq"]
+animation = &"Emote1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1u52u"]
+animation = &"Hurt"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p5sgd"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u3q8j"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jw02y"]
+animation = &"Run"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_pnsac"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_u3q8j")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_jw02y")
+blend_point_1/pos = 1.0
+min_space = 0.0
+value_label = "walkspeed"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6tiog"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7b5as"]
+advance_mode = 2
+advance_expression = "did_win"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bife6"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "did_win"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0gshr"]
+advance_mode = 2
+advance_expression = "bounce"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f86jy"]
+advance_mode = 2
+advance_expression = "not bounce"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jxilp"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yuvv4"]
+advance_mode = 2
+advance_expression = "not did_win"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_y3ryi"]
+states/Attack1/node = SubResource("AnimationNodeAnimation_hv5dr")
+states/Attack1/position = Vector2(528.95, 250.52)
+states/Emote1/node = SubResource("AnimationNodeAnimation_xxsiq")
+states/Emote1/position = Vector2(702.45, 252.52)
+states/Hurt/node = SubResource("AnimationNodeAnimation_1u52u")
+states/Hurt/position = Vector2(625.475, -18.6525)
+states/Idle/node = SubResource("AnimationNodeAnimation_p5sgd")
+states/Idle/position = Vector2(718.975, 138.347)
+states/MoveBlendSpace/node = SubResource("AnimationNodeBlendSpace1D_pnsac")
+states/MoveBlendSpace/position = Vector2(480.5, 111.25)
+states/Start/position = Vector2(274.5, 111.5)
+transitions = ["Start", "MoveBlendSpace", SubResource("AnimationNodeStateMachineTransition_6tiog"), "MoveBlendSpace", "Attack1", SubResource("AnimationNodeStateMachineTransition_7b5as"), "Attack1", "Emote1", SubResource("AnimationNodeStateMachineTransition_bife6"), "MoveBlendSpace", "Hurt", SubResource("AnimationNodeStateMachineTransition_0gshr"), "Hurt", "MoveBlendSpace", SubResource("AnimationNodeStateMachineTransition_f86jy"), "Emote1", "Idle", SubResource("AnimationNodeStateMachineTransition_jxilp"), "Idle", "MoveBlendSpace", SubResource("AnimationNodeStateMachineTransition_yuvv4")]
+graph_offset = Vector2(215.475, -42.6525)
+
+[node name="Character" type="Node3D"]
+script = ExtResource("1_40kn6")
+
+[node name="3DGodotRobot" parent="." instance=ExtResource("1_adrgb")]
+
+[node name="Skeleton3D" parent="3DGodotRobot/RobotArmature" index="0"]
+bones/0/rotation = Quaternion(0.0149092, 1.19196e-07, 1.77731e-09, 0.999889)
+bones/1/rotation = Quaternion(0.0294489, -1.52097e-14, 7.02117e-09, 0.999566)
+bones/4/rotation = Quaternion(0.00540027, -1.19208e-07, -6.43763e-10, 0.999985)
+bones/5/rotation = Quaternion(0.00821238, -4.94309e-14, -1.95798e-09, 0.999966)
+bones/10/rotation = Quaternion(0.0194111, 0.743406, -0.0238222, 0.668134)
+bones/14/rotation = Quaternion(0.0194111, -0.743406, 0.0238222, 0.668134)
+bones/17/rotation = Quaternion(0.999647, 0.0210636, -0.00512356, 0.0153314)
+bones/18/rotation = Quaternion(-0.00618425, 0.00495339, 0.0269892, 0.999604)
+bones/21/rotation = Quaternion(0.999647, -0.0210636, 0.00512357, 0.0153314)
+bones/22/rotation = Quaternion(-0.00618428, -0.00495338, -0.0269892, 0.999604)
+bones/23/rotation = Quaternion(-0.492808, -0.00262191, 0.00521295, 0.870119)
+bones/24/rotation = Quaternion(6.34575e-08, 0.980764, -0.195196, -1.82779e-06)
+
+[node name="AnimationTree" type="AnimationTree" parent="3DGodotRobot"]
+tree_root = SubResource("AnimationNodeStateMachine_y3ryi")
+anim_player = NodePath("../AnimationPlayer")
+parameters/MoveBlendSpace/blend_position = 0.373457
+script = ExtResource("3_xhw34")
+
+[editable path="3DGodotRobot"]

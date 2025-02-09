@@ -1,0 +1,224 @@
+[gd_scene load_steps=23 format=3 uid="uid://by2ttfeujc56g"]
+
+[ext_resource type="Script" path="res://MazeRunner.gd" id="1_xf8cm"]
+[ext_resource type="PackedScene" uid="uid://dp443o7bre56r" path="res://Models/character.tscn" id="2_g3pqq"]
+[ext_resource type="Texture2D" uid="uid://b25cqtugd6neo" path="res://Arrows/UpArrow.png" id="2_i6fg7"]
+[ext_resource type="Texture2D" uid="uid://cql7hnqe2yv01" path="res://Arrows/RightArrow.png" id="3_3lnmb"]
+[ext_resource type="Texture2D" uid="uid://wltre4oxexra" path="res://Arrows/DownArrow.png" id="4_c8old"]
+[ext_resource type="Texture2D" uid="uid://daymxwrd5h7d4" path="res://Arrows/LeftArrow.png" id="5_elglu"]
+[ext_resource type="Texture2D" uid="uid://fxchi57k2n3l" path="res://Arrows/X.png" id="7_qdai4"]
+[ext_resource type="Texture2D" uid="uid://wajhoi8xhcl" path="res://Arrows/Go.png" id="7_wmssw"]
+[ext_resource type="FontFile" uid="uid://dd73c34qajte7" path="res://Font/WinFont.otf" id="8_kifsn"]
+[ext_resource type="Shader" uid="uid://w3dtj3c8krc0" path="res://WinText.tres" id="8_yhdp4"]
+[ext_resource type="Texture2D" uid="uid://dhk2ymp3r64kg" path="res://RedCircle.png" id="10_1n8c2"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_1j17e"]
+device = -1
+keycode = 4194320
+
+[sub_resource type="Shortcut" id="Shortcut_v4gww"]
+events = [SubResource("InputEventKey_1j17e")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_cyx7j"]
+device = -1
+keycode = 4194321
+
+[sub_resource type="Shortcut" id="Shortcut_ibhtm"]
+events = [SubResource("InputEventKey_cyx7j")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_8acd3"]
+device = -1
+keycode = 4194322
+
+[sub_resource type="Shortcut" id="Shortcut_r4o82"]
+events = [SubResource("InputEventKey_8acd3")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_3cgm5"]
+device = -1
+keycode = 4194319
+
+[sub_resource type="Shortcut" id="Shortcut_lltfk"]
+events = [SubResource("InputEventKey_3cgm5")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_nks7l"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_b0er6"]
+events = [SubResource("InputEventKey_nks7l")]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eekg6"]
+shader = ExtResource("8_yhdp4")
+
+[node name="Root" type="Node3D"]
+script = ExtResource("1_xf8cm")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
+
+[node name="HUD" type="Control" parent="Camera3D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Camera3D/HUD"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -150.0
+offset_right = 300.0
+offset_bottom = 150.0
+grow_vertical = 2
+
+[node name="Up" type="Button" parent="Camera3D/HUD/Control"]
+layout_mode = 0
+offset_left = 100.0
+offset_right = 200.0
+offset_bottom = 100.0
+shortcut = SubResource("Shortcut_v4gww")
+icon = ExtResource("2_i6fg7")
+expand_icon = true
+
+[node name="Right" type="Button" parent="Camera3D/HUD/Control"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 100.0
+offset_right = 300.0
+offset_bottom = 200.0
+shortcut = SubResource("Shortcut_ibhtm")
+icon = ExtResource("3_3lnmb")
+expand_icon = true
+
+[node name="Down" type="Button" parent="Camera3D/HUD/Control"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 200.0
+offset_right = 200.0
+offset_bottom = 300.0
+shortcut = SubResource("Shortcut_r4o82")
+icon = ExtResource("4_c8old")
+expand_icon = true
+
+[node name="Left" type="Button" parent="Camera3D/HUD/Control"]
+layout_mode = 0
+offset_top = 100.0
+offset_right = 100.0
+offset_bottom = 200.0
+shortcut = SubResource("Shortcut_lltfk")
+icon = ExtResource("5_elglu")
+expand_icon = true
+
+[node name="BottomBox" type="HBoxContainer" parent="Camera3D/HUD"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 37.0
+offset_top = -173.0
+offset_right = -31.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Start" type="Button" parent="Camera3D/HUD/BottomBox"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+shortcut = SubResource("Shortcut_b0er6")
+icon = ExtResource("7_wmssw")
+alignment = 0
+expand_icon = true
+
+[node name="ShownControls" type="HBoxContainer" parent="Camera3D/HUD/BottomBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Camera3D/HUD/BottomBox/ShownControls"]
+layout_mode = 2
+texture = ExtResource("4_c8old")
+expand_mode = 3
+
+[node name="RevertButton" type="Button" parent="Camera3D/HUD"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_bottom = 100.0
+grow_horizontal = 0
+icon = ExtResource("7_qdai4")
+expand_icon = true
+
+[node name="WinText" type="RichTextLabel" parent="Camera3D/HUD"]
+visible = false
+material = SubResource("ShaderMaterial_eekg6")
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -396.0
+offset_top = 120.0
+offset_right = 397.0
+offset_bottom = 311.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("8_kifsn")
+theme_override_font_sizes/normal_font_size = 200
+text = "You Win!"
+
+[node name="CurrentActionCircle" type="TextureRect" parent="Camera3D/HUD"]
+z_index = -10
+layout_mode = 0
+offset_left = 169.0
+offset_top = 803.0
+offset_right = 649.0
+offset_bottom = 1283.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("10_1n8c2")
+
+[node name="NextLevelButton" type="Button" parent="Camera3D/HUD"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -244.0
+offset_top = 250.0
+offset_right = 244.0
+offset_bottom = 348.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_kifsn")
+theme_override_font_sizes/font_size = 100
+text = "Next Level"
+
+[node name="ColorRect" type="ColorRect" parent="Camera3D/HUD"]
+z_index = -100
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 186.0
+offset_top = -173.0
+offset_right = 1122.0
+offset_bottom = -23.0
+grow_vertical = 0
+color = Color(0, 0, 0, 0.627451)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.859799, 0.510633, 0, -0.510633, 0.859799, 0, 10.5307, 20.0497)
+
+[node name="Character" parent="." instance=ExtResource("2_g3pqq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.08739)
+
+[node name="LevelPiecesParent" type="Node3D" parent="."]
+
+[node name="ConfettiSoundEffectPlayer" type="AudioStreamPlayer3D" parent="."]
+
+[node name="BonkSoundEffectPlayer" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
