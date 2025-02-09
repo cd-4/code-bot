@@ -20,7 +20,19 @@ Each level the player is on a grid and needs to get to the green square. They ar
 and only up to 6 commands total. If the player has not finished by the end of the inputs, the robot will go back
 to the start of the inputs
 
-# Levels
+# Lesson Plan
+
+### Intro
+
+To introduce this, explain that there is a robot and he needs to get to the green square. And inform them
+of the following:
+
+- You can add commands to the robot that are Up, Down, Left, and Right
+- You can only do a total of 6 commands
+- If the robot runs out of commands, he will start the commands over
+- If the robot hits a wall, he will not go anywhere
+
+## Levels
 
 There are several solutions to each level, but the screenshots show at least one solution to the level. Then it 
 includes a blurb about what to teach for that level.
@@ -66,8 +78,9 @@ worth it to show by example.
 
 ![Level6](ScreenShots/Level6.png)
 
-This level introduces the walls, and if the robot runs into the walls he will end up not moving with a little
+This level also has walls, and if the robot runs into the walls he will end up not moving with a little
 bonk animation and sound effect. The correct answer to this is shown and might be a little tough to explain.
+You can of course do the obvious solution, but try to emphasize that you want to be clever to solve it.
 
 ### Level 7
 
