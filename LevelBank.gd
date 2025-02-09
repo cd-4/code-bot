@@ -3,45 +3,46 @@ extends Node
 class_name LevelBank
 
 var levels = [
-	# Level 0
+	# Level 1
 	[
 		"ooo",
 		"@x!",
 		"ooo",],
-	# Level 1
+	# Level 2
 	[
 		"oo",
 		"@x",
 		"x!"],
-	# Level 2
+	# Level 3
 	[
 		"oooooooo",
 		"oooooooo",
 		"o@xxxx!o",
 		"oooooooo",
 		"oooooooo"],
-	# Level 3
-	[
-		"@xxx",
-		"xxxx",
-		"xxxx",
-		"xxx!"
-	],
 	# Level 4
 	[
+		"@xB",
+		"oxBo",
+		"oxxx",
+		"BoxB",
+		"xo!o"
+	],
+	# Level 5
+	[
 		"@xxx",
 		"xxxx",
 		"xxxx",
 		"xxxx",
 		"xxx!"
 	],
-	# Level 5
+	# Level 6
 	[
 		"@xoo",
 		"oxBo",
 		"o!oo",
 		"oooo"],
-	# Level 6
+	# Level 7
 	[
 		"o@ooo",
 		"BxxxB",
