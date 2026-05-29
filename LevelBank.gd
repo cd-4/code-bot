@@ -22,11 +22,10 @@ var levels = [
 		"oooooooo"],
 	# Level 4
 	[
-		"@xB",
+		"@xoo",
 		"oxBo",
-		"oxxx",
-		"BoxB",
-		"xo!o"
+		"o!oo",
+		"oooo"
 	],
 	# Level 5
 	[
@@ -38,10 +37,15 @@ var levels = [
 	],
 	# Level 6
 	[
-		"@xoo",
-		"oxBo",
-		"o!oo",
-		"oooo"],
+		"@xBo",
+		"oxBoo",
+		"oxxxx",
+		"BoxBo",
+		"xoxxo",
+		"oooxB",
+		"oBo!o"
+	],
+
 	# Level 7
 	[
 		"o@ooo",
