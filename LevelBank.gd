@@ -2,62 +2,33 @@ extends Node
 
 class_name LevelBank
 
-var levels = [
-	# Level 1
-	[
-		"ooo",
-		"@x!",
-		"ooo",],
-	# Level 2
-	[
-		"oo",
-		"@x",
-		"x!"],
-	# Level 3
-	[
-		"oooooooo",
-		"oooooooo",
-		"o@xxxx!o",
-		"oooooooo",
-		"oooooooo"],
-	# Level 4
-	[
-		"@xoo",
-		"oxBo",
-		"o!oo",
-		"oooo"
-	],
-	# Level 5
-	[
-		"@xxx",
-		"xxxx",
-		"xxxx",
-		"xxxx",
-		"xxx!"
-	],
-	# Level 6
-	[
-		"@xBo",
-		"oxBoo",
-		"oxxxx",
-		"BoxBo",
-		"xoxxo",
-		"oooxB",
-		"oBo!o"
-	],
-
-	# Level 7
-	[
-		"o@ooo",
-		"BxxxB",
-		"oBBxo",
-		"o!xxo",
-	]
-]
-
+var levels = []
 var level_index = 0
 
+func _init():
+	_load_levels()
+
+func _load_levels():
+	var i = 1
+	while true:
+		var path = "res://Levels/level_%d.txt" % i
+		if not FileAccess.file_exists(path):
+			break
+		var file = FileAccess.open(path, FileAccess.READ)
+		var content = file.get_as_text()
+		file.close()
+		var cells = []
+		for line in content.split("\n"):
+			var row = line.strip_edges()
+			if row != "":
+				cells.append(row)
+		levels.append(cells)
+		i += 1
+
 func get_level_data():
+	if levels.is_empty():
+		push_error("LevelBank: no level files found in res://Levels/")
+		return []
 	return levels[level_index % len(levels)]
 
 func get_current_level():
@@ -69,13 +40,5 @@ func get_current_level():
 func next_level():
 	level_index = level_index + 1
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
-	#levels = _create_levels()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

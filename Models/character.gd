@@ -16,6 +16,14 @@ func set_win(win:bool):
 func set_walking(is_walking:bool):
 	walking = is_walking
 
+func reset():
+	walking = false
+	anim_tree.bounce = false
+	anim_tree.did_win = false
+	anim_tree.set("parameters/MoveBlendSpace/blend_position", 0)
+	var playback = anim_tree.get("parameters/playback")
+	playback.travel("MoveBlendSpace")
+
 func _update_animations(delta: float):
 	if walking:
 		anim_tree.set("parameters/MoveBlendSpace/blend_position", 0.5)

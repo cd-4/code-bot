@@ -139,8 +139,7 @@ func _reset_player():
 					player_position = [r, c]
 					var S = cell_size.x * 0.3
 					player.scale = Vector3(S, S, S)
-	player.set_walking(false)
-	player.set_win(false)
+	player.reset()
 	player.global_rotation.y = _rotation_from_direction(character.WalkDirection.DOWN)
 	player_action_index = 0
 	win_text.visible = false
@@ -254,6 +253,8 @@ func _remove_last_input():
 func _scan_inputs() -> void:
 	if Input.is_action_just_pressed("delete_action"):
 		_remove_last_input()
+	if Input.is_action_just_pressed("start_action"):
+		start()
 
 func _return_to_planning() -> void:
 	if is_running:
