@@ -1,6 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://by2ttfeujc56g"]
+[gd_scene format=3 uid="uid://by2ttfeujc56g"]
 
-[ext_resource type="Script" path="res://MazeRunner.gd" id="1_xf8cm"]
+[ext_resource type="Script" uid="uid://bi5ppuw4g1pf1" path="res://MazeRunner.gd" id="1_xf8cm"]
 [ext_resource type="PackedScene" uid="uid://dp443o7bre56r" path="res://Models/character.tscn" id="2_g3pqq"]
 [ext_resource type="Texture2D" uid="uid://b25cqtugd6neo" path="res://Arrows/UpArrow.png" id="2_i6fg7"]
 [ext_resource type="Texture2D" uid="uid://cql7hnqe2yv01" path="res://Arrows/RightArrow.png" id="3_3lnmb"]
@@ -50,13 +50,13 @@ events = [SubResource("InputEventKey_nks7l")]
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eekg6"]
 shader = ExtResource("8_yhdp4")
 
-[node name="Root" type="Node3D"]
+[node name="Root" type="Node3D" unique_id=451295071]
 script = ExtResource("1_xf8cm")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=664901159]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
 
-[node name="HUD" type="Control" parent="Camera3D"]
+[node name="HUD" type="Control" parent="Camera3D" unique_id=1870702947]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -64,7 +64,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="Camera3D/HUD"]
+[node name="Control" type="Control" parent="Camera3D/HUD" unique_id=1075519821]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -74,7 +74,7 @@ offset_right = 300.0
 offset_bottom = 150.0
 grow_vertical = 2
 
-[node name="Up" type="Button" parent="Camera3D/HUD/Control"]
+[node name="Up" type="Button" parent="Camera3D/HUD/Control" unique_id=487693272]
 layout_mode = 0
 offset_left = 100.0
 offset_right = 200.0
@@ -83,7 +83,7 @@ shortcut = SubResource("Shortcut_v4gww")
 icon = ExtResource("2_i6fg7")
 expand_icon = true
 
-[node name="Right" type="Button" parent="Camera3D/HUD/Control"]
+[node name="Right" type="Button" parent="Camera3D/HUD/Control" unique_id=509439639]
 layout_mode = 0
 offset_left = 200.0
 offset_top = 100.0
@@ -93,7 +93,7 @@ shortcut = SubResource("Shortcut_ibhtm")
 icon = ExtResource("3_3lnmb")
 expand_icon = true
 
-[node name="Down" type="Button" parent="Camera3D/HUD/Control"]
+[node name="Down" type="Button" parent="Camera3D/HUD/Control" unique_id=60462395]
 layout_mode = 0
 offset_left = 100.0
 offset_top = 200.0
@@ -103,7 +103,7 @@ shortcut = SubResource("Shortcut_r4o82")
 icon = ExtResource("4_c8old")
 expand_icon = true
 
-[node name="Left" type="Button" parent="Camera3D/HUD/Control"]
+[node name="Left" type="Button" parent="Camera3D/HUD/Control" unique_id=518391803]
 layout_mode = 0
 offset_top = 100.0
 offset_right = 100.0
@@ -112,7 +112,7 @@ shortcut = SubResource("Shortcut_lltfk")
 icon = ExtResource("5_elglu")
 expand_icon = true
 
-[node name="BottomBox" type="HBoxContainer" parent="Camera3D/HUD"]
+[node name="BottomBox" type="HBoxContainer" parent="Camera3D/HUD" unique_id=496984852]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -125,7 +125,7 @@ offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Start" type="Button" parent="Camera3D/HUD/BottomBox"]
+[node name="Start" type="Button" parent="Camera3D/HUD/BottomBox" unique_id=1526279992]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 shortcut = SubResource("Shortcut_b0er6")
@@ -133,16 +133,16 @@ icon = ExtResource("7_wmssw")
 alignment = 0
 expand_icon = true
 
-[node name="ShownControls" type="HBoxContainer" parent="Camera3D/HUD/BottomBox"]
+[node name="ShownControls" type="HBoxContainer" parent="Camera3D/HUD/BottomBox" unique_id=317136611]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="Camera3D/HUD/BottomBox/ShownControls"]
+[node name="TextureRect" type="TextureRect" parent="Camera3D/HUD/BottomBox/ShownControls" unique_id=2071686603]
 layout_mode = 2
 texture = ExtResource("4_c8old")
 expand_mode = 3
 
-[node name="RevertButton" type="Button" parent="Camera3D/HUD"]
+[node name="RevertButton" type="Button" parent="Camera3D/HUD" unique_id=760245107]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
 anchors_preset = 1
@@ -154,7 +154,7 @@ grow_horizontal = 0
 icon = ExtResource("7_qdai4")
 expand_icon = true
 
-[node name="WinText" type="RichTextLabel" parent="Camera3D/HUD"]
+[node name="WinText" type="RichTextLabel" parent="Camera3D/HUD" unique_id=1630198398]
 visible = false
 material = SubResource("ShaderMaterial_eekg6")
 layout_mode = 1
@@ -170,7 +170,7 @@ theme_override_fonts/normal_font = ExtResource("8_kifsn")
 theme_override_font_sizes/normal_font_size = 200
 text = "You Win!"
 
-[node name="CurrentActionCircle" type="TextureRect" parent="Camera3D/HUD"]
+[node name="CurrentActionCircle" type="TextureRect" parent="Camera3D/HUD" unique_id=846268503]
 z_index = -10
 layout_mode = 0
 offset_left = 169.0
@@ -180,7 +180,7 @@ offset_bottom = 1283.0
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("10_1n8c2")
 
-[node name="NextLevelButton" type="Button" parent="Camera3D/HUD"]
+[node name="NextLevelButton" type="Button" parent="Camera3D/HUD" unique_id=1919101095]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -197,7 +197,7 @@ theme_override_fonts/font = ExtResource("8_kifsn")
 theme_override_font_sizes/font_size = 100
 text = "Next Level"
 
-[node name="ColorRect" type="ColorRect" parent="Camera3D/HUD"]
+[node name="ColorRect" type="ColorRect" parent="Camera3D/HUD" unique_id=876094489]
 z_index = -100
 layout_mode = 1
 anchors_preset = 2
@@ -210,15 +210,15 @@ offset_bottom = -23.0
 grow_vertical = 0
 color = Color(0, 0, 0, 0.627451)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1842239060]
 transform = Transform3D(1, 0, 0, 0, 0.859799, 0.510633, 0, -0.510633, 0.859799, 0, 10.5307, 20.0497)
 
-[node name="Character" parent="." instance=ExtResource("2_g3pqq")]
+[node name="Character" parent="." unique_id=943840577 instance=ExtResource("2_g3pqq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.08739)
 
-[node name="LevelPiecesParent" type="Node3D" parent="."]
+[node name="LevelPiecesParent" type="Node3D" parent="." unique_id=21354626]
 
-[node name="ConfettiSoundEffectPlayer" type="AudioStreamPlayer3D" parent="."]
+[node name="ConfettiSoundEffectPlayer" type="AudioStreamPlayer3D" parent="." unique_id=392170287]
 
-[node name="BonkSoundEffectPlayer" type="AudioStreamPlayer3D" parent="."]
+[node name="BonkSoundEffectPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1623649378]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
