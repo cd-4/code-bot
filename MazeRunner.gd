@@ -255,6 +255,14 @@ func _scan_inputs() -> void:
 		_remove_last_input()
 	if Input.is_action_just_pressed("start_action"):
 		start()
+	if Input.is_action_just_pressed("input_up"):
+		_add_up_input()
+	if Input.is_action_just_pressed("input_down"):
+		_add_down_input()
+	if Input.is_action_just_pressed("input_left"):
+		_add_left_input()
+	if Input.is_action_just_pressed("input_right"):
+		_add_right_input()
 
 func _return_to_planning() -> void:
 	if is_running:
