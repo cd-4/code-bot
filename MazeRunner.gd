@@ -429,7 +429,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	_update_shown_controls()
 	_highlight_command()
-	if Input.is_action_just_pressed("quit"):
+	if OS.has_feature("editor") and Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 	if not is_running:
 		_scan_inputs()
