@@ -3,6 +3,8 @@
 .godot/
 /android/
 
+export/
+
 *.DS_Store
 
 # Godot-specific ignores
